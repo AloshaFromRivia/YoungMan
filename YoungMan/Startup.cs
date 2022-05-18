@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using YoungMan.Models;
 
 namespace YoungMan
 {
@@ -17,6 +18,8 @@ namespace YoungMan
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(options =>options.EnableEndpointRouting=false);
+            services.AddTransient<IProductRepository,TestProductProductRepository>();
+            services.AddTransient<ICategoryRepository, TestCategoriesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

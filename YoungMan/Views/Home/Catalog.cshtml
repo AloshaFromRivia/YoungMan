@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "Католог";
+    Layout = "_Layout";
+}
+<div class="row row-cols-2">
+    <div class="col-md-3 col-sm-12 shadow mr-4">
+        <h2 class="text-center my-2">Навигация по каталогу</h2>
+         <!--Search Form -->
+         <div class="my-2">
+             <form method="get" asp-controller="Home">
+                 <label for="searchString">Поиск по названию</label>
+                 <div class="input-group">
+                     <div class="form-outline col-md-10 col-sm-10 px-0">
+                         <input type="search" id="searchString" name="searchString" class="form-control" placeholder="Поиск"/>
+                     </div>
+                     <button type="submit" class="btn btn-warning col-md-2 col-sm-auto">
+                         <i class="fas fa-search text-white"></i>
+                     </button>
+                 </div>
+                 <label for="categoryId" class="mt-4">Поиск по категории</label>
+                 <select name="categoryId" id="categoryId" class="form-select col-12" aria-label="Default select example">
+                     <option selected value="0">Всё</option>
+                     <option value="1">Кроссовки</option>
+                     <option value="2">Футболки</option>
+                     <option value="3">Джинсы</option>
+                     <option value="4">Головные уборы</option>
+                 </select>
+             </form>
+         </div>
+         <!--End Search Form -->
+    </div>
+    <div class="col-md-8 col-sm-12 shadow p-4">
+        <h2 class="text-center my-2">Каталог</h2>
+        <div class="row row-cols-1 row-cols-md-4 row-cols-sm-1 my-2">
+            @foreach (var item in Model)
+            {
+                @await Html.PartialAsync("Product", item)
+            }
+        </div>
+    </div>
+</div>

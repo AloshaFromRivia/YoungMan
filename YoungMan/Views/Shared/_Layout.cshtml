@@ -8,7 +8,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
-    
+    <link rel="stylesheet" href="/css/custom.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+   
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -16,25 +18,25 @@
 @*SideBar*@
 <div class="wrapper d-flex align-items-stretch">
     <nav id="sidebar" class="active bg-warning">
-        <h1><a href="/" class="logo"><span class="text-secondary">Y</span>M</a></h1>
-        <ul class="list-unstyled components mb-5">
+        <h1><a href="/" class="logo text-decoration-none"><span class="text-secondary">Y</span>M</a></h1>
+        <ul class="list-unstyled components mb-5 hover">
             <li class="active">
-                <a asp-controller="Home" asp-action="Index"><span class="fa fa-home"></span> Главная</a>
+                <a asp-controller="Home" asp-action="Index" class="text-decoration-none"><span class="fa fa-home"></span> Главная</a>
             </li>
             <li>
-                <a href="#"><span class="fa fa-circle-info"></span> О Нас</a>
+                <a asp-controller="Home" asp-action="About" class="text-decoration-none"><span class="fa fa-circle-info"></span> О Нас</a>
             </li>
             <li>
-                <a href="#"><span class="fa fa-shirt"></span> Каталог</a>
+                <a asp-controller="Home" asp-action="Catalog" class="text-decoration-none"><span class="fa fa-shirt" ></span> Каталог</a>
             </li>
             <li>
-                <a href="#"><span class="fa fa-cart-arrow-down"></span> Корзина</a>
+                <a href="#" class="text-decoration-none"><span class="fa fa-cart-arrow-down"></span> Корзина</a>
             </li>
             <li>
-                <a href="#"><span class="fa fa-arrow-right-to-bracket"></span> Войти</a>
+                <a href="#" class="text-decoration-none"><span class="fa fa-arrow-right-to-bracket"></span> Войти</a>
             </li>
             <li>
-                <a href="#"><span class="fa fa-address-card"></span> Регистрация</a>
+                <a href="#" class="text-decoration-none"><span class="fa fa-address-card"></span> Регистрация</a>
             </li>
         </ul>
 
@@ -66,10 +68,10 @@
                             <a class="nav-link" asp-action="Index" asp-controller="Home">Главная</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">О Нас</a>
+                            <a class="nav-link" asp-action="About" asp-controller="Home">О Нас</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Каталог</a>
+                            <a class="nav-link" asp-action="Catalog" asp-controller="Home">Каталог</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Корзина</a>
@@ -86,7 +88,7 @@
 </div>
 
 <script src="https://kit.fontawesome.com/2bbfa3fb57.js" crossorigin="anonymous"></script>
-<script src="js/jquery.min.js"></script>
+<script src="/js/jquery.min.js"></script>
 <script src="/js/popper.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="/js/main.js"></script>

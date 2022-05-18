@@ -1,0 +1,25 @@
+﻿@model Product
+
+<div class="col-md col-sm-12 mb-4">
+    <div class="card h-100 shadow" style="border: none">
+        <img src="/images/boots1.jpg" class="card-img-top w-50 mx-auto" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <span class="card-text text-muted">@Model.Category.Name</span>
+            <div class="my-1 d-flex">
+                <p class="card-text d-flex col-6 p-0">
+                    @for (int i = 0; i < @Model.Mark; i++)
+                    {
+                        <span><i class="fa-solid fa-star text-warning"></i></span>
+                    }
+                </p>
+                <a class="card-text col-6 text-right">@Model.Price.ToString("C0")</a>
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn btn-warning text-white"><i class="fa-solid fa-cart-arrow-down"></i> В корзину</a>
+                <a href="#" class="btn btn-outline-warning"><i class="fa-solid fa-heart"></i></a>
+                <a href="#" class="btn btn-outline-warning"><i class="fa-solid fa-bookmark"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
