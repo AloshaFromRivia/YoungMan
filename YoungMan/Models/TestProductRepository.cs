@@ -3,13 +3,13 @@ using System.Linq;
 
 namespace YoungMan.Models
 {
-    public class TestProductProductRepository : IProductRepository
+    public class TestProductRepository : IProductRepository
     {
         private List<Product> _products;
 
         public IQueryable<Product> Products => _products.AsQueryable();
 
-        public TestProductProductRepository()
+        public TestProductRepository()
         {
             _products = new List<Product>();
             _products.AddRange(new []
@@ -57,6 +57,17 @@ namespace YoungMan.Models
                     },
                     Price = 10005,
                     Mark = 5
+                },
+                new Product()
+                {
+                    Name = "TetName3",
+                    CategoryId = 1,
+                    Category = new Category()
+                    {
+                        Name = "test cat"
+                    },
+                    Price = 1000,
+                    Mark = 4
                 }
             });
         }

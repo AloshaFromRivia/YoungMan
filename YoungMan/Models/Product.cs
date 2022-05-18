@@ -15,7 +15,7 @@ namespace YoungMan.Models
         public string Description { get; set; }
         [Required]
         [DisplayName("В наличии")]
-        public bool? InStock { get; set; }
+        public bool InStock { get; set; }
         [Required]
         [DisplayName("Цена")]
         public decimal Price { get; set; }
@@ -27,5 +27,6 @@ namespace YoungMan.Models
         [Required]
         [Range(0,5)]
         public byte Mark { get; set; }
+        public byte[] Image { get; set; }
     }
 }

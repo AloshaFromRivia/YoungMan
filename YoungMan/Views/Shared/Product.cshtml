@@ -2,11 +2,11 @@
 
 <div class="col-md col-sm-12 mb-4">
     <div class="card h-100 shadow" style="border: none">
-        <img src="/images/boots1.jpg" class="card-img-top w-50 mx-auto" alt="...">
+        <img src="data:image/gif;base64,@Convert.ToBase64String(Model.Image)" class="card-img-top mx-auto img-fluid overflow-hidden" alt="...">
         <div class="card-body">
             <h5 class="card-title">@Model.Name</h5>
             <span class="card-text text-muted">@Model.Category.Name</span>
-            <div class="my-1 d-flex">
+            <div class="my-1 d-flex mb-4">
                 <p class="card-text d-flex col-6 p-0">
                     @for (int i = 0; i < @Model.Mark; i++)
                     {
@@ -15,10 +15,19 @@
                 </p>
                 <a class="card-text col-6 text-right">@Model.Price.ToString("C0")</a>
             </div>
-            <div class="btn-group">
-                <a href="#" class="btn btn-warning text-white"><i class="fa-solid fa-cart-arrow-down"></i> В корзину</a>
-                <a href="#" class="btn btn-outline-warning"><i class="fa-solid fa-heart"></i></a>
-                <a href="#" class="btn btn-outline-warning"><i class="fa-solid fa-bookmark"></i></a>
+        </div>
+        <div class="card-footer">
+            <div class="btn-group my-2">
+                @if (Model.InStock)
+                {
+                    <a href="#" class="btn btn-warning text-white align-bottom"><i class="fa-solid fa-cart-arrow-down"></i> В корзину</a>
+                }
+                else
+                {
+                    <button disabled class="btn btn-warning text-white align-bottom">Нет в наличии</button>
+                }
+                <a href="#" class="btn btn-outline-warning align-bottom"><i class="fa-solid fa-heart"></i></a>
+                <a href="#" class="btn btn-outline-warning align-bottom"><i class="fa-solid fa-bookmark"></i></a>
             </div>
         </div>
     </div>

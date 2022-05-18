@@ -4,11 +4,12 @@
     ViewBag.Title = "Католог";
     Layout = "_Layout";
 }
-<div class="row row-cols-2">
-    <div class="col-md-3 col-sm-12 shadow mr-4">
+
+<div class="row row-cols-1 row-cols-md-2">
+    <div class="col-md-3 col-sm-12 shadow mr-4 h-100">
         <h2 class="text-center my-2">Навигация по каталогу</h2>
          <!--Search Form -->
-         <div class="my-2">
+         <div class="mt-2 mb-4">
              <form method="get" asp-controller="Home">
                  <label for="searchString">Поиск по названию</label>
                  <div class="input-group">
@@ -20,13 +21,12 @@
                      </button>
                  </div>
                  <label for="categoryId" class="mt-4">Поиск по категории</label>
-                 <select name="categoryId" id="categoryId" class="form-select col-12" aria-label="Default select example">
-                     <option selected value="0">Всё</option>
-                     <option value="1">Кроссовки</option>
-                     <option value="2">Футболки</option>
-                     <option value="3">Джинсы</option>
-                     <option value="4">Головные уборы</option>
-                 </select>
+                 <div class="input-group">
+                     <select name="categoryId" asp-items="@ViewBag.Categories" id="categoryId" class="form-select col-md-10 col-sm-10 px-0" aria-label="Default select example">
+                         <option selected value="0">Всё</option>
+                     </select>
+                     <a class="btn btn-warning col-md-2 col-sm-auto" asp-controller="Home" asp-action="Clear" ><i class="fa fa-trash text-white"></i></a>
+                 </div>
              </form>
          </div>
          <!--End Search Form -->
@@ -37,6 +37,19 @@
             @foreach (var item in Model)
             {
                 @await Html.PartialAsync("Product", item)
+            }
+        </div>
+        <div class="btn-group text-center">
+            @for (int i = 1; i <= ViewBag.TotalPages; i++)
+            {
+                @Html.ActionLink($"{i}","Catalog","Home",
+                    new
+                    {
+                        id=i-1,
+                        searchString=ViewBag.SearchString,
+                        categoryId=ViewBag.CategoryId
+                    },
+                    new{@class=$"btn {(ViewBag.Id == i ? "btn-warning text-white" : "btn-outline-warning")}"})
             }
         </div>
     </div>
