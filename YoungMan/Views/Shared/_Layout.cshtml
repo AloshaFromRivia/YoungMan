@@ -30,7 +30,7 @@
                 <a asp-controller="Home" asp-action="Catalog" class="text-decoration-none"><span class="fa fa-shirt" ></span> Каталог</a>
             </li>
             <li>
-                <a href="#" class="text-decoration-none"><span class="fa fa-cart-arrow-down"></span> Корзина</a>
+                <a asp-controller="Cart" asp-action="Index" class="text-decoration-none"><span class="fa fa-cart-arrow-down"></span> Корзина</a>
             </li>
             <li>
                 <a href="#" class="text-decoration-none"><span class="fa fa-arrow-right-to-bracket"></span> Войти</a>
@@ -74,7 +74,7 @@
                             <a class="nav-link" asp-action="Catalog" asp-controller="Home">Каталог</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Корзина</a>
+                            <a class="nav-link" asp-action="Index" asp-controller="Cart">Корзина</a>
                         </li>
                     </ul>
                 </div>

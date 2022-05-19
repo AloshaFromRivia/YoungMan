@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace YoungMan.Models
 {
@@ -8,6 +9,10 @@ namespace YoungMan.Models
         private List<Product> _products;
 
         public IQueryable<Product> Products => _products.AsQueryable();
+        public Task<Product> FindByIdAsync(int id)
+        {
+            throw new System.NotImplementedException();
+        }
 
         public TestProductRepository()
         {

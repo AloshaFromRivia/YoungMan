@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace YoungMan.Models
+namespace YoungMan.Infrastructure
 {
     public class PaginatedList<T>
     {

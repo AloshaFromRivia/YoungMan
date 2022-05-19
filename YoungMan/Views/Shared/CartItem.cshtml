@@ -1,0 +1,26 @@
+﻿@model CartItemModel
+
+<div class=" col-md col-sm-12 my-2">
+    <div class="card shadow" style="border: none">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="data:image/gif;base64,@Convert.ToBase64String(Model.Product.Image)" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">@Model.Product.Name</h5>
+                    @for (int i = 0; i < @Model.Product.Mark; i++)
+                    {
+                        <span><i class="fa-solid fa-star text-warning"></i></span>
+                    }
+                    <p class="card-text"><small class="text-muted">@Model.Product.Price.ToString("C0") - За 1 шт.</small></p>
+                     <p class="card-text"><small class="text-muted">@Model.Count - Кол-во</small></p>
+                    <form method="post" asp-controller="Cart" asp-action="RemoveFromCart">
+                         <input hidden value="@Model.Product.Id" for="productId" name="productId"/>
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

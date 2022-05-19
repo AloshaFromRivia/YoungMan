@@ -1,0 +1,53 @@
+﻿@model Order
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+<div class="container shadow p-2">
+    <div asp-validation-summary="All"></div>
+    <form asp-action="Index" asp-controller="Order" method="post">
+        <h1 class="text-center my-2">Форма заказа</h1>
+        <div>
+            <div class="form-group">
+                <div asp-validation-for="Name"></div>
+                <label asp-for="Name"></label>
+                <input class="form-control" type="text" asp-for="Name"/>
+            </div>
+            <div class="form-group">
+                <div asp-validation-for="City"></div>
+                <label asp-for="City"></label>
+                <input class="form-control" asp-for="City"/>
+            </div>
+            <div class="form-group">
+                <div asp-validation-for="Country"></div>
+                <label asp-for="Country"></label>
+                <input class="form-control" asp-for="Country"/>
+            </div>
+            <div class="form-group">
+                <div asp-validation-for="Line"></div>
+                <label asp-for="Line"></label>
+                <input class="form-control" asp-for="Line"/>
+            </div>
+            <div class="form-group">
+                <div asp-validation-for="Phone"></div>
+                <label asp-for="Phone"></label>
+                <input class="form-control" asp-for="Phone"/>
+            </div>
+            <div class="form-group">
+                <div asp-validation-for="PostalCode"></div>
+                <label asp-for="PostalCode"></label>
+                <input class="form-control" asp-for="PostalCode"/>
+            </div>
+            <div class="form-group">
+                <div asp-validation-for="Card"></div>
+                <label asp-for="Card"></label>
+                <input class="form-control" asp-for="Card"/>
+            </div>
+            <div class="form-group">
+                <input class="btn btn-warning text-white" type="submit" value="Завершить"/>
+            </div>
+        </div>
+    </form>
+</div>

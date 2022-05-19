@@ -20,7 +20,10 @@
             <div class="btn-group my-2">
                 @if (Model.InStock)
                 {
-                    <a href="#" class="btn btn-warning text-white align-bottom"><i class="fa-solid fa-cart-arrow-down"></i> В корзину</a>
+                    <form method="post" asp-controller="Cart" asp-action="AddToCart">
+                        <input hidden value="@Model.Id" for="productId" name="productId"/>
+                        <button type="submit" class="btn btn-warning text-white align-bottom"><i class="fa-solid fa-cart-arrow-down"></i> В корзину</button>
+                    </form>
                 }
                 else
                 {

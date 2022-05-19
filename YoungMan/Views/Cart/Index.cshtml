@@ -1,0 +1,23 @@
+﻿@model Cart
+
+@{
+    ViewBag.Title = "Корзина";
+    Layout = "_Layout";
+}
+
+<div class="container shadow">
+    <h1 class="text-center my-2">Ваша корзина:</h1>
+    <div class="row row-cols-1 row-cols-md-2 my-2 p-4">
+        @foreach (var item in Model.CartItems)
+        {
+            @await Html.PartialAsync("CartItem", item)
+        }
+    </div>
+</div>
+<div class="container shadow mt-4 p-2">
+    <div class="my-4">
+        <h2>Итого: <span class="text-muted">@Model.Total.ToString("C0")</span></h2>
+        <a class="btn btn-warning text-white" asp-controller="Home" asp-action="Catalog">Продолжить покупки</a>
+        <a class="btn btn-warning text-white" asp-controller="Order" asp-action="Index">Оплатить</a>
+    </div>
+</div>

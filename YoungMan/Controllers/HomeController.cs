@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using YoungMan.Models;
+using YoungMan.Infrastructure;
 
 namespace YoungMan.Controllers
 {
@@ -31,7 +32,7 @@ namespace YoungMan.Controllers
                 ItemsPerPage = productsPerPage
             };
             
-            ViewBag.Id = id+1;
+            ViewBag.Id = id+1; //page number
             ViewBag.TotalPages = paginatedList.TotalPages;
             ViewBag.Categories = new SelectList(_categoryRepository.Categories, "Id", "Name");
             

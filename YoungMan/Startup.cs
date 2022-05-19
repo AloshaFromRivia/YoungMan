@@ -26,8 +26,14 @@ namespace YoungMan
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(options =>options.EnableEndpointRouting=false);
+            services.AddMemoryCache();
+            services.AddSession();
+            
             services.AddTransient<IProductRepository,EfProducts>();
             services.AddTransient<ICategoryRepository, EfCategories>();
+            services.AddTransient<IOrderRepository, EfOrders>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
 
             services.AddDbContext<AppDbContext>(builder =>
                 builder.UseSqlServer(Configuration["Data:YoungMan:ConnectionString"]));
@@ -38,8 +44,9 @@ namespace YoungMan
         {
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
-            
+
             app.UseStaticFiles();
+            app.UseSession();
             
             app.UseMvcWithDefaultRoute();
         }

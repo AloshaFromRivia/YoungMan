@@ -18,6 +18,7 @@ namespace YoungMan.Models
         public bool InStock { get; set; }
         [Required]
         [DisplayName("Цена")]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
         [Required]
         [DisplayName("Id Категории")]
