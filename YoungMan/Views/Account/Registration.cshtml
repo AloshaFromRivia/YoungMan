@@ -1,0 +1,38 @@
+﻿@model YoungMan.Models.ViewModels.RegistrationModel
+
+@{
+    ViewBag.Title = "Регистрация";
+    Layout = "_Layout";
+}
+
+<div class="container shadow p-2">
+    <form asp-action="Registration" asp-controller="Account" method="post">
+            <h1 class="text-center my-2">Регистрация в YoungMan</h1>
+        <div>
+            <div asp-validation-summary="All"></div>
+            <div class="form-group">
+                <div asp-validation-for="Email"></div>
+                <label asp-for="Email"></label>
+                <input class="form-control" type="text" asp-for="Email"/>
+            </div>
+            <div class="form-group">
+                <div asp-validation-for="Name"></div>
+                <label asp-for="Name"></label>
+                <input class="form-control" type="text" asp-for="Name"/>
+            </div>
+            <div class="form-group">
+                <div asp-validation-for="City"></div>
+                <label asp-for="Password"></label>
+                <input class="form-control" asp-for="Password"/>
+            </div>
+            <div class="form-group">
+                <div asp-validation-for="City"></div>
+                <label asp-for="PhoneNumber"></label>
+                <input class="form-control" asp-for="PhoneNumber"/>
+            </div>
+            <div class="form-group align-items-center">
+                <input class="btn btn-warning text-white" type="submit" value="Регистрация"/>
+            </div>
+        </div>
+        </form>
+</div>

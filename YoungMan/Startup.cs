@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +38,18 @@ namespace YoungMan
 
             services.AddDbContext<AppDbContext>(builder =>
                 builder.UseSqlServer(Configuration["Data:YoungMan:ConnectionString"]));
+            services.AddDbContext<AppIdentityContext>(builder =>
+                builder.UseSqlServer(Configuration["Data:YoungManIdentity:ConnectionString"]));
+            services.AddIdentity<IdentityUser,IdentityRole>(options =>
+                {
+                    options.User.RequireUniqueEmail = true;
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                } )
+                .AddEntityFrameworkStores<AppIdentityContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +58,7 @@ namespace YoungMan
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
 
+            app.UseAuthentication();
             app.UseStaticFiles();
             app.UseSession();
             

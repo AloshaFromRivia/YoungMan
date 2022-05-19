@@ -32,12 +32,24 @@
             <li>
                 <a asp-controller="Cart" asp-action="Index" class="text-decoration-none"><span class="fa fa-cart-arrow-down"></span> Корзина</a>
             </li>
-            <li>
-                <a href="#" class="text-decoration-none"><span class="fa fa-arrow-right-to-bracket"></span> Войти</a>
-            </li>
-            <li>
-                <a href="#" class="text-decoration-none"><span class="fa fa-address-card"></span> Регистрация</a>
-            </li>
+           @if (!User.Identity.IsAuthenticated)
+           {
+               <li>
+                   <a asp-controller="Account" asp-action="Login" class="text-decoration-none"><span class="fa fa-arrow-right-to-bracket"></span> Войти</a>
+               </li>
+               <li>
+                   <a asp-controller="Account" asp-action="Registration" class="text-decoration-none"><span class="fa fa-address-card"></span> Регистрация</a>
+               </li>
+           }
+           else
+           {
+               <li>
+                   <a href="#" class="text-decoration-none"><span class="fa fa-user"></span> @User.Identity.Name</a>
+               </li>
+               <li>
+                   <a asp-controller="Account" asp-action="Logout" class="text-decoration-none"><span class="fa-solid fa-arrow-right-from-bracket"></span> Выйти</a>
+               </li>
+           }
         </ul>
 
         <div class="footer">

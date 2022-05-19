@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YoungMan.Models;
 
 namespace YoungMan.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         public IProductRepository _repository;

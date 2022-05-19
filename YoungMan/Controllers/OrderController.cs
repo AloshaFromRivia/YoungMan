@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using YoungMan.Models;
 
 namespace YoungMan.Controllers
 {
+    [Authorize]
     public class OrderController : Controller
     {
         private IOrderRepository _repository;
